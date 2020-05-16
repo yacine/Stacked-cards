@@ -24,5 +24,7 @@ npm run build
 
 ## Credits
 
-Made with [createapp.dev](https://createapp.dev/)
+[createapp.dev](https://createapp.dev/) \
+[GSAP 3](https://github.com/greensock/GSAP) \
+[ScrollScene](https://github.com/jonkwheeler/ScrollScene)
 
