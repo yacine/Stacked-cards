@@ -1,0 +1,25 @@
+{
+  "name": "stacked-cards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm -fr dist/",
+    "start": "parcel src/index.html",
+    "build": "npm run clean && parcel build src/index.html"
+  },
+  "dependencies": {
+    "gsap": "^3.2.6",
+    "scrollmagic": "^2.0.7",
+    "scrollscene": "0.0.18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^2.0.0",
+    "sass": "^1.26.5"
+  }
+}
