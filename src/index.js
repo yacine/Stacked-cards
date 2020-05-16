@@ -24,16 +24,16 @@ function cardScaleDownTl(el) {
   timeline
     .addLabel('in')
     .to(el, {
-      ease: 'none',
-      scale: .6,
-      rotateX: -90
+      ease: 'power1.out',
+      scale: .7,
+      y: -20
     })
     
     // Optional
     .to(el.querySelector('.mockup'), {
-      ease: 'power2.inOut',
-      y: 100,
-      scale: .7
+      ease: 'power1.out',
+      y: 50,
+      scale: .95
     }, 'in')
   
     return timeline;
