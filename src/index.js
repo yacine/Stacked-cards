@@ -1,6 +1,6 @@
 
 import { gsap } from "gsap";
-import { ScrollScene} from 'scrollscene';
+import { ScrollScene } from 'scrollscene';
 
  
 // Creating a card scene
