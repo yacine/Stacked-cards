@@ -24,6 +24,20 @@ Build
 npm run build
 ```
 
+## Ussage
+```sh
+new StackedCards({ options })
+```
+# Options
+```sh
+{
+  element : '.card', // Card element
+  idicators: true, // Show or hide indicators
+  offest: 100, // Space between each card
+  pin: 100 // card pin top offset
+}
+```
+
 ## Credits
 
 [createapp.dev](https://createapp.dev/) \

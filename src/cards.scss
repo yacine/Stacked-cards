@@ -27,7 +27,7 @@ body {
   font-family: "SF Pro Display", helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
-// Layout
+// Cards styling
 // -------------------
 
 .cards {
@@ -36,7 +36,6 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   margin: auto;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -46,7 +45,6 @@ body {
   width: 100%;
   color: #fff;
   border-radius: .9rem;
-  transform-origin: 50% 50%;
   min-height: 320px;
 
   &-inner {
