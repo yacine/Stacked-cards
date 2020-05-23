@@ -24,7 +24,7 @@ Build
 npm run build
 ```
 
-# Ussage
+# Usage
 ```sh
 new StackedCards({ options })
 ```
