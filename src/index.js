@@ -3,6 +3,24 @@ import { gsap } from "gsap";
 import { ScrollScene} from 'scrollscene';
 
  
+// Register gsap effect
+// --------------------------------
+gsap.registerEffect({
+  name: "scaleDown",
+  effect: (targets, config) => {
+    return gsap.to(targets, {
+      ease: config.ease,
+      scale: .7,
+      y: -20,
+    });
+  },
+  defaults: {
+    ease: 'power1.out'
+  },
+  extendTimeline: true
+});
+
+
 // Creating a card scene
 // --------------------------------
 function CreateCardsScene(el) {  
@@ -11,7 +29,7 @@ function CreateCardsScene(el) {
     offset: -150,
     triggerHook: .5,
     gsap: {
-      timeline: cardScaleDownTl(el),
+      timeline: stackedCardsTl(el),
     },
     duration: '100%',
   })
@@ -19,24 +37,12 @@ function CreateCardsScene(el) {
 
 // Scale down timeLine
 // --------------------------------
-function cardScaleDownTl(el) {
+function stackedCardsTl(el) {
   const timeline = gsap.timeline({ paused: true });
   timeline
     .addLabel('in')
-    .to(el, {
-      ease: 'power1.out',
-      scale: .7,
-      y: -20
-    })
-    
-    // Optional
-    .to(el.querySelector('.mockup'), {
-      ease: 'power1.out',
-      y: 50,
-      scale: .95
-    }, 'in')
-  
-    return timeline;
+    .scaleDown(el)
+  return timeline;
 }
 
 
@@ -48,6 +54,7 @@ function stackedCards(cardClassName) {
     CreateCardsScene(cards[index]);
   }
 }
+
 
 // Stacked cards init
 // -----------------------------
