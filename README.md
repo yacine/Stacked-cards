@@ -24,19 +24,19 @@ Build
 npm run build
 ```
 
-## Ussage
+# Ussage
 ```sh
 new StackedCards({ options })
 ```
-# Options
-```sh
-{
-  element : '.card', // Card element
-  idicators: true, // Show or hide indicators
-  offest: 100, // Space between each card
-  pin: 100 // card pin top offset
-}
-```
+## Options
+
+| Option        | Description                              |
+| ------------- |----------------------------------------  |
+| element       | card class name eg: .card                |
+| indicators    | show or hide ScrollMagic indicators      |
+| offset        | space between each card                  |
+| pin           | card pin top offset                      |
+
 
 ## Credits
 
