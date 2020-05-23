@@ -2,53 +2,86 @@
 import { gsap } from "gsap";
 import { ScrollScene } from 'scrollscene';
 
- 
-// Creating a card scene
-// --------------------------------
-function CreateCardsScene(el) {  
-  return new ScrollScene({
-    triggerElement: el.nextElementSibling,
-    offset: -150,
-    triggerHook: .5,
-    gsap: {
-      timeline: cardScaleDownTl(el),
-    },
-    duration: '100%',
-  })
-}
 
-// Scale down timeLine
-// --------------------------------
-function cardScaleDownTl(el) {
-  const timeline = gsap.timeline({ paused: true });
-  timeline
-    .addLabel('in')
-    .to(el, {
-      ease: 'power1.out',
-      scale: .7,
-      y: -20
+
+class StackedCards {
+  constructor(opts) {
+    this.cards = document.querySelectorAll(opts.element);
+    this.indicators = opts.indicators || false;
+    this.pin = opts.pin || 80;
+    this.offset = opts.offset || (this.cards[0].offsetHeight) / 2;
+    this.init();
+  }
+
+
+  // Set styles
+  // --------------------------------
+  setStyle(el) {
+    gsap.set(this.cards, {
+      position: 'sticky',
+      top: this.pin,
+      marginBottom: this.offset
     })
-    
-    // Optional
-    .to(el.querySelector('.mockup'), {
-      ease: 'power1.out',
-      y: 50,
-      scale: .95
-    }, 'in')
-  
+  }
+
+  // Scale down timeLine
+  // --------------------------------
+  cardScaleDownTl(el) {
+    const timeline = gsap.timeline({
+      paused: true
+    });
+    timeline
+      .addLabel('in')
+      .to(el, {
+        ease: 'power1.out',
+        scale: .7,
+        y: -20
+      })
+
     return timeline;
-}
+  }
 
 
-// Creating scens and binding tweens to all cards
-// ------------------------------------------------
-function stackedCards(cardClassName) {
-  const cards = document.querySelectorAll(cardClassName);
-  for (let index = 0; index < cards.length-1; index++) {
-    CreateCardsScene(cards[index]);
+  // Creating a card scene
+  // --------------------------------
+  CreateCardsScene(el, indicators) {
+    return new ScrollScene({
+      controller: {
+        addIndicators: this.indicators,
+      },
+      triggerElement: el.nextElementSibling,
+      // offset: -(this.offset),
+      offset: 0,
+      triggerHook: .5,
+        addIndicators: true,
+      gsap: {
+        timeline: this.cardScaleDownTl(el),
+      },
+      duration: '100%',
+    })
+  }
+
+  // Creating scens and binding tweens to all cards
+  // ------------------------------------------------
+  init() {
+    console.log(this.offset);
+
+    this.setStyle();
+    
+    for (let index = 0; index < this.cards.length - 1; index++) {
+      this.CreateCardsScene(this.cards[index]);
+    }
   }
 }
 
+
 // Stacked cards init
 // -----------------------------
-stackedCards('.card');
+
+new StackedCards({
+  element: '.card',
+  indicators: true,
+  pin: 100,
+  offset: 120
+});
+
